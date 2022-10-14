@@ -2,21 +2,17 @@ package model
 
 import "github.com/google/uuid"
 
-type Item struct {
+type Category struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
-	Category uuid.UUID `gorm:"not null;" json:"category"`
-	Detail string `gorm:"not null;" json:"detail"`
-	UserManual string `gorm:"not null;" json:"user_manual"`
-	Price int16 `gorm:"not null;" json:"price"`
+	Name      string    `gorm:"not null;" json:"name"`
 	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
 }
 
-func (Item) TableName() string {
-	return "item"
+func (Category) TableName() string {
+	return "category"
 }
 
-type ItemUpdateRequest struct {
+type CategoryUpdateRequest struct {
 	//Id          *string          `json:"id"`
 	//Name        *string          `json:"name" `
 	//Key         *string          `json:"key"`

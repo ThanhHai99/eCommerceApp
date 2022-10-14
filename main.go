@@ -32,5 +32,5 @@ func migrateDb() {
 	defer db.Close()
 	_, _ = db.DB().Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
 	_, _ = db.DB().Exec("CREATE SEQUENCE IF NOT EXISTS file_id")
-	db.AutoMigrate(&model.Product{})
+	db.AutoMigrate(&model.Category{}, &model.CategoryLog{}, &model.Invoice{}, &model.Item{}, &model.ItemLog{}, &model.Order{}, &model.PriceLog{}, &model.Product{}, &model.Role{}, &model.Sale{}, &model.SaleItem{}, &model.SaleLog{}, &model.User{}, &model.Warehouse{}, &model.WarehouseLog{})
 }
