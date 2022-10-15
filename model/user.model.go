@@ -1,8 +1,18 @@
 package model
 
+import "github.com/google/uuid"
+
 type User struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	UserName    string    `gorm:"not null;" json:"user_name"`
+	Password    string    `gorm:"not null;" json:"password"`
+	Name        string    `gorm:"not null;" json:"name"`
+	Phone       string    `gorm:"not null;" json:"phone"`
+	Address     string    `gorm:"not null;" json:"address"`
+	IsActive    bool      `gorm:"not null;" json:"is_active"`
+	VerifyToken string    `gorm:"not null;" json:"verify_token"`
+	RoleId      uuid.UUID `gorm:"not null;" json:"role_id"`
+	IsLocked    bool      `gorm:"not null;" json:"is_locked"`
 }
 
 func (User) TableName() string {

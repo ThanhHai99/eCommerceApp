@@ -1,8 +1,13 @@
 package model
 
+import "github.com/google/uuid"
+
 type PriceLog struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	Name      string    `gorm:"not null;" json:"name"`
+	ItemId    uuid.UUID `gorm:"not null;" json:"item_id"`
+	Price     int16     `gorm:"not null;" json:"price"`
+	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
 }
 
 func (PriceLog) TableName() string {

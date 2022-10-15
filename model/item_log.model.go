@@ -1,8 +1,15 @@
 package model
 
+import "github.com/google/uuid"
+
 type ItemLog struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	Name       string    `gorm:"not null;" json:"name"`
+	Detail     string    `gorm:"not null;" json:"detail"`
+	UserManual string    `gorm:"not null;" json:"user_manual"`
+	CreatedBy  uuid.UUID `gorm:"not null;" json:"created_by"`
+	ItemId     uuid.UUID `gorm:"not null;" json:"item_id"`
+	CategoryId uuid.UUID `gorm:"not null;" json:"category_id"`
 }
 
 func (ItemLog) TableName() string {

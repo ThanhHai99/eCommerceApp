@@ -1,8 +1,15 @@
 package model
 
+import (
+	"github.com/google/uuid"
+	"time"
+)
+
 type Warehouse struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	ItemId         uuid.UUID `gorm:"not null;" json:"item_id"`
+	ExpirationDate time.Time `gorm:"not null;" json:"expiration_date"`
+	Amount         int16     `gorm:"not null;" json:"amount"`
 }
 
 func (Warehouse) TableName() string {

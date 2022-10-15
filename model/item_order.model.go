@@ -1,8 +1,13 @@
 package model
 
+import "github.com/google/uuid"
+
 type ItemOrder struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	Name    string    `gorm:"not null;" json:"name"`
+	ItemId  uuid.UUID `gorm:"not null;" json:"item_id"`
+	OrderID uuid.UUID `gorm:"not null;" json:"order_id"`
+	Amount  int16     `gorm:"not null;" json:"amount"`
 }
 
 func (ItemOrder) TableName() string {

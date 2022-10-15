@@ -6,6 +6,7 @@ import (
 )
 
 type BaseModel struct {
+	// https://gorm.io/docs/models.html
 	ID        uuid.UUID  `gorm:"type:uuid;primary_key;default:uuid_generate_v4()" json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`

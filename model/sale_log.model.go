@@ -1,8 +1,22 @@
 package model
 
+import (
+	"github.com/google/uuid"
+	"time"
+)
+
 type SaleLog struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	Name      string    `gorm:"not null;" json:"name"`
+	SaleItem  string    `gorm:"not null;" json:"sale_item"`
+	StartDate time.Time `gorm:"not null;" json:"start_date"`
+	EndDate   time.Time `gorm:"not null;" json:"end_date"`
+	Amount    string    `gorm:"not null;" json:"amount"`
+	Discount  int8      `gorm:"not null;" json:"discount"`
+	Applied   bool      `gorm:"not null;" json:"applied"`
+	Code      string    `gorm:"not null;" json:"code"`
+	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
+	SaleId    uuid.UUID `gorm:"not null;" json:"sale_id"`
 }
 
 func (SaleLog) TableName() string {
