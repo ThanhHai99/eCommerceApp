@@ -5,7 +5,6 @@ import "github.com/google/uuid"
 type CategoryLog struct {
 	BaseModel
 	Name     string    `gorm:"not null;" json:"name"`
-	CreateAt uuid.UUID `gorm:"not null;" json:"create_at"`
 	Category uuid.UUID `gorm:"not null;" json:"category"`
 }
 

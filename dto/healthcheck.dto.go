@@ -5,7 +5,6 @@ type HealCheckDataRes struct {
 }
 
 type HealthCheckRes struct {
-	Code    string           `json:"code"`
-	Message string           `json:"message"`
-	Data    HealCheckDataRes `json:"data"`
+	BaseRes
+	Data HealCheckDataRes `json:"data"`
 }

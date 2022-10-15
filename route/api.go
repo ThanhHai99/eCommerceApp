@@ -6,4 +6,5 @@ import (
 
 func SetupRouter(rootRoute *gin.RouterGroup) {
 	healthCheckRoutes(rootRoute)
+	authenticateRoutes(rootRoute)
 }

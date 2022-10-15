@@ -37,12 +37,15 @@ var (
 func Connect() (*gorm.DB, error) {
 	db, err := gorm.Open(dbConfig.DBType, dbUrl)
 
-	// SetMaxIdleConn sets the maximum number of connections in the idle connection pool.
-	db.DB().SetMaxIdleConns(2)
+	if db != nil {
+		// SetMaxIdleConn sets the maximum number of connections in the idle connection pool.
+		db.DB().SetMaxIdleConns(2)
 
-	// SetMaxOpenConn sets the maximum number of open connections to the database.
-	db.DB().SetMaxOpenConns(2)
-	AddUUIDGenerateExtension(db)
+		// SetMaxOpenConn sets the maximum number of open connections to the database.
+		db.DB().SetMaxOpenConns(2)
+		AddUUIDGenerateExtension(db)
+	}
+
 	return db, err
 }
 
