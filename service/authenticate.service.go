@@ -9,6 +9,7 @@ import (
 func Register(registerBody dto.RegisterBody) dto.RegisterRes {
 	res := dto.RegisterRes{}
 	db, _ := model.Connect()
+	defer db.Close()
 	err1 := db.Create(registerBody).Error
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
