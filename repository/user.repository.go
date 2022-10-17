@@ -2,21 +2,37 @@ package repository
 
 import (
 	"eCommerce/model"
-	"github.com/jinzhu/gorm"
 )
 
-var (
-	db, _ = model.Connect()
-)
-
-func IsHaveVerifyToken(token string) (tx *gorm.DB) {
+func CreateNew(user *model.User) error {
+	db, _ := model.Connect()
 	defer db.Close()
-	record := db.Model(&model.User{}).First(&model.User{}, model.User{VerifyToken: token})
-
-	return record
+	err := db.Model(&model.User{}).Create(user).Error
+	return err
 }
 
-func ActiveAccount(tx *gorm.DB) {
+func CheckExists(username string) bool {
+	db, _ := model.Connect()
 	defer db.Close()
-	 _ = tx.Update(model.User{IsActive: true}).Error
+	exist := db.Model(&model.User{}).First(&model.User{}, model.User{Username: username})
+	if exist.RowsAffected == 0 {
+		return false
+	}
+	return true
+}
+
+func IsHaveVerifyToken(token string) *model.User {
+	db, _ := model.Connect()
+	defer db.Close()
+	record := model.User{}
+	//record = db.Model(&model.User{}).First(&model.User{}, model.User{VerifyToken: token})
+	db.First(&record, model.User{VerifyToken: token})
+	return &record
+}
+
+func ActiveAccount(username string) error {
+	db, _ := model.Connect()
+	defer db.Close()
+	 err := db.Where(model.User{Username: username}).Update(model.User{IsActive: true}).Error
+	 return err
 }

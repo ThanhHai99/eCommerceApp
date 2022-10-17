@@ -11,7 +11,7 @@ import (
 func Register(c *gin.Context) {
 	input := dto.RegisterBody{}
 	_ = c.BindJSON(&input)
-	res := service.Register(input)
+	res := service.Register(&input)
 	if res.Code == util.FAIL_CODE {
 		c.JSON(http.StatusBadRequest, res)
 		return

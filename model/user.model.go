@@ -4,7 +4,7 @@ import "github.com/google/uuid"
 
 type User struct {
 	BaseModel
-	UserName    string    `gorm:"not null;" json:"user_name"`
+	Username    string    `gorm:"not null;" json:"username"`
 	Password    string    `gorm:"not null;" json:"password"`
 	Name        string    `gorm:"not null;" json:"name"`
 	Phone       string    `gorm:"not null;" json:"phone"`
