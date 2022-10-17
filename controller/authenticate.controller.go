@@ -14,6 +14,7 @@ func Register(c *gin.Context) {
 	res := service.Register(input)
 	if res.Code == util.FAIL_CODE {
 		c.JSON(http.StatusBadRequest, res)
+		return
 	}
 	c.JSON(http.StatusOK, res)
 }
@@ -24,6 +25,7 @@ func Login(c *gin.Context) {
 	res := service.Login(input)
 	if res.Code == util.FAIL_CODE {
 		c.JSON(http.StatusBadRequest, res)
+		return
 	}
 	c.JSON(http.StatusOK, res)
 }
@@ -34,6 +36,7 @@ func Verify(c *gin.Context) {
 	res := service.Verify(token)
 	if res.Code == util.FAIL_CODE {
 		c.JSON(http.StatusBadRequest, res)
+		return
 	}
 	c.JSON(http.StatusOK, res)
 }

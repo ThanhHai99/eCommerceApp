@@ -3,6 +3,7 @@ package service
 import (
 	"eCommerce/dto"
 	"eCommerce/model"
+	"eCommerce/repository"
 	"eCommerce/util"
 )
 
@@ -30,9 +31,7 @@ func Login(loginBody dto.LoginBody) dto.LoginRes {
 
 func Verify(token string) dto.VerifyRes {
 	res := dto.VerifyRes{}
-	db, _ := model.Connect()
-	defer db.Close()
-	record := db.Model(&model.User{}).First(&model.User{}, model.User{VerifyToken: token})
+	record := repository.IsHaveVerifyToken(token)
 	if record == nil || record.RowsAffected == 0 {
 		res.Code = util.FAIL_CODE
 		res.Message = "Token không đúng"
