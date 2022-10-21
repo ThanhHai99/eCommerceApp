@@ -7,6 +7,7 @@ type RegisterBody struct {
 
 type RegisterRes struct {
 	BaseRes
+	IsSentMailActive bool `json:"is_sent_mail_active"`
 }
 
 type LoginBody struct {

@@ -2,10 +2,12 @@ package service
 
 import (
 	"eCommerce/dto"
+	"eCommerce/helper"
 	"eCommerce/model"
 	"eCommerce/repository"
 	"eCommerce/util"
 	"encoding/json"
+	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 	"reflect"
 )
@@ -18,15 +20,23 @@ func Register(registerBody *dto.RegisterBody) dto.RegisterRes {
 		res.Message = "This account is in use"
 	} else {
 		newUser := model.User{}
+		passwordHashed, _ := helper.HashPassword(registerBody.Password)
+		registerBody.Password = passwordHashed
+		newUser.VerifyToken = uuid.New().String()
 		body, _ := json.Marshal(registerBody)
 		_ = json.Unmarshal(body, &newUser)
-		err1 := repository.CreateNew(&newUser)
-		if err1 != nil {
+		err2 := repository.CreateNew(&newUser)
+		if err2 != nil {
 			res.Code = util.FAIL_CODE
 			res.Message = "Server error"
 		} else {
-			_ = repository.GenerateToken(registerBody.Username)
-			// Send mail
+			//mailContent := "Click this link to active user: " + utils.BE_BASE_URL + utils.BASE_URL_ACTIVE + "?active_code=" + activeCode
+			mailContent := ""
+			err3 := util.SendMail(newUser.Username, "Active account eCommerce", mailContent)
+			if err3 == nil {
+				res.IsSentMailActive = true
+			}
+
 			res.Code = util.SUCCESS_CODE
 			res.Message = "Register successfully"
 		}

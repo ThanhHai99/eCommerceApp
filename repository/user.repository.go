@@ -2,20 +2,12 @@ package repository
 
 import (
 	"eCommerce/model"
-	"github.com/google/uuid"
 )
 
 func CreateNew(user *model.User) error {
 	db, _ := model.Connect()
 	defer db.Close()
 	err := db.Model(&model.User{}).Create(user).Error
-	return err
-}
-
-func GenerateToken(username string) error {
-	db, _ := model.Connect()
-	defer db.Close()
-	err := db.Where(model.User{Username: username}).Update(&model.User{}, model.User{VerifyToken: uuid.New().String()}).Error
 	return err
 }
 
