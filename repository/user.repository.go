@@ -7,8 +7,8 @@ import (
 func CreateNew(user *model.User) error {
 	db, _ := model.Connect()
 	defer db.Close()
-	err := db.Model(&model.User{}).Create(user).Error
-	return err
+	err1 := db.Model(&model.User{}).Create(user).Error
+	return err1
 }
 
 func CheckExists(username string) bool {

@@ -46,20 +46,15 @@ func CreateAccessToken(username string) (string, error) {
 	return accessToken, nil
 }
 
-func IsAccessTokenValid(accessToken string) bool {
-	tokenString := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhaGEiLCJleHAiOjE2NjY1MTYxNjJ9.aQfi1xbfxZY1SG7MkWi0Q0Wpycd5JBdf3bW7-AtvOkI"
-
-	// sample token is expired.  override time so it parses as valid
-	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
-		return []byte("AllYourBase"), nil
+func ValidateToken(accessToken string) bool {
+	token, _ := jwt.ParseWithClaims(accessToken, &Claims{}, func(token *jwt.Token) (interface{}, error) {
+		return []byte(jwtConfigs.SecretKey), nil
 	})
 
 	if claims, ok := token.Claims.(*Claims); ok && token.Valid {
-		fmt.Printf("%v %v", claims.Username, claims.StandardClaims.ExpiresAt)
+		fmt.Printf("%v %v\n", claims.Username, claims.StandardClaims.ExpiresAt)
+		return true
 	} else {
-		fmt.Println(err)
+		return false
 	}
-
-	return true
-
 }
