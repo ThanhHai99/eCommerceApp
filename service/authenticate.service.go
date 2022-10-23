@@ -7,12 +7,12 @@ import (
 	"eCommerce/repository"
 	"eCommerce/util"
 	"encoding/json"
+	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
-	"reflect"
 )
 
-func Register(registerBody *dto.RegisterBody) dto.RegisterRes {
+func Register(c *gin.Context, registerBody *dto.RegisterBody) dto.RegisterRes {
 	res := dto.RegisterRes{}
 	userExisted := repository.CheckExists(registerBody.Username)
 	if userExisted == true {
@@ -30,8 +30,12 @@ func Register(registerBody *dto.RegisterBody) dto.RegisterRes {
 			res.Code = util.FAIL_CODE
 			res.Message = "Server error"
 		} else {
-			//mailContent := "Click this link to active user: " + utils.BE_BASE_URL + utils.BASE_URL_ACTIVE + "?active_code=" + activeCode
-			mailContent := ""
+			protocol := "http"
+			if c.Request.TLS != nil {
+				protocol = "https"
+			}
+			activeUserUrl := protocol + "://" + c.Request.Host + "/api/verify/" + newUser.VerifyToken
+			mailContent := "Click this link to active user: " + activeUserUrl
 			err3 := util.SendMail(newUser.Username, "Active account eCommerce", mailContent)
 			if err3 == nil {
 				res.IsSentMailActive = true
@@ -48,17 +52,16 @@ func Register(registerBody *dto.RegisterBody) dto.RegisterRes {
 func Login(loginBody dto.LoginBody) dto.LoginRes {
 	res := dto.LoginRes{}
 	user := repository.GetOneByUsername(loginBody.Username)
-	if user != nil {
+	if user == nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "The username is not exists"
 	} else {
 		err1 := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(loginBody.Password))
 		if err1 == nil {
-			if !reflect.DeepEqual(user, model.User{}) {
-
-			}
+			accessToken, _ := helper.CreateAccessToken(user.Username)
 			res.Code = util.SUCCESS_CODE
 			res.Message = "Login successfully"
+			res.AccessToken = accessToken
 		} else {
 			res.Code = util.FAIL_CODE
 			res.Message = "The credential is invalid"

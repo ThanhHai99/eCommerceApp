@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func authenticateRoutes(rootRoute *gin.RouterGroup) {
+func AuthenticateRoutes(rootRoute *gin.RouterGroup) {
 	authenticateRouter := rootRoute.Group("/authentication")
 	{
 		authenticateRouter.POST("/register", controller.Register)

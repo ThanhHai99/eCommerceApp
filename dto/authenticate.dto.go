@@ -17,6 +17,7 @@ type LoginBody struct {
 
 type LoginRes struct {
 	BaseRes
+	AccessToken string `json:"access_token"`
 }
 
 type VerifyRes struct {

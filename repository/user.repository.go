@@ -34,9 +34,10 @@ func ActiveAccount(username string) error {
 	return err
 }
 
-func GetOneByUsername(username string) (user *model.User) {
+func GetOneByUsername(username string) *model.User {
+	record := model.User{}
 	db, _ := model.Connect()
 	defer db.Close()
-	_ = db.First(&user, model.User{Username: username}).Error
-	return user
+	_ = db.First(&record, model.User{Username: username}).Error
+	return &record
 }

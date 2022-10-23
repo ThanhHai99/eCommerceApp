@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func healthCheckRoutes(rootRoute *gin.RouterGroup) {
+func HealthCheckRoutes(rootRoute *gin.RouterGroup) {
 	healthCheckRouter := rootRoute.Group("/health-check")
 	{
 		healthCheckRouter.GET("/status", controller.HealthCheck)
