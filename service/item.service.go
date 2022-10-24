@@ -6,6 +6,7 @@ import (
 	"eCommerce/repository"
 	"eCommerce/util"
 	"encoding/json"
+	"github.com/google/uuid"
 )
 
 func GetAllItem(query map[string]string) dto.GetAllItemRes {
@@ -21,6 +22,21 @@ func GetAllItem(query map[string]string) dto.GetAllItemRes {
 		res.Code = util.SUCCESS_CODE
 		res.Message = "Successfully"
 		res.Data = dataRes
+	}
+
+	return res
+}
+
+func GetOneItem(id uuid.UUID) dto.GetOneItemRes {
+	res := dto.GetOneItemRes{}
+	record, err1 := repository.GetOneItem(id)
+	if err1 != nil {
+		res.Code = util.FAIL_CODE
+		res.Message = "Server error"
+	} else {
+		res.Code = util.SUCCESS_CODE
+		res.Message = "Successfully"
+		res.Data = record
 	}
 
 	return res

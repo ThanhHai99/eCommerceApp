@@ -18,6 +18,7 @@ type GetAllItemRes struct {
 
 type GetOneItemRes struct {
 	BaseRes
+	Data model.Item `json:"data`
 }
 
 type ItemBody struct {
