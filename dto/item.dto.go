@@ -21,6 +21,15 @@ type GetOneItemRes struct {
 	Data model.Item `json:"data`
 }
 
+type UpdateItemRes struct {
+	BaseRes
+	Data model.Item `json:"data`
+}
+
+type DeleteItemRes struct {
+	BaseRes
+}
+
 type ItemBody struct {
 	Name       string    `json:"name"`
 	Category   uuid.UUID `json:"category"`

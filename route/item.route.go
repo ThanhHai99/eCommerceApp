@@ -11,6 +11,8 @@ func ItemRoutes(rootRoute *gin.RouterGroup) {
 	{
 		itemRouter.GET("/", controller.GetAllItem)
 		itemRouter.GET("/:id", controller.GetOneItem)
+		itemRouter.PATCH("/:id", controller.UpdateItem)
 		itemRouter.POST("/", controller.CreateOneItem)
+		itemRouter.DELETE("/:id", controller.DeleteItem)
 	}
 }
