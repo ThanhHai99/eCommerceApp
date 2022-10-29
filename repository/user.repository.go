@@ -2,6 +2,7 @@ package repository
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
 )
 
 func CreateNew(user *model.User) error {
@@ -41,3 +42,52 @@ func GetOneByUsername(username string) *model.User {
 	_ = db.First(&record, model.User{Username: username}).Error
 	return &record
 }
+
+func GetAllUser() (invoices []model.User, err error) {
+	db, _ := model.Connect()
+	defer db.Close()
+	err = db.Model(&model.User{}).Find(&invoices).Error
+	if err != nil {
+		return nil, err
+	}
+	return
+}
+
+func GetOneUser(id uuid.UUID) (res model.User, err error) {
+	db, _ := model.Connect()
+	defer db.Close()
+	err = db.Model(&model.User{}).Where("id = ?", id).First(&res).Error
+	if err != nil {
+		return model.User{}, err
+	}
+	return
+}
+
+func UpdateUser(invoiceId uuid.UUID, input map[string]interface{}) (res model.User, err error) {
+	res.ID = invoiceId
+	db, err := model.Connect()
+	defer db.Close()
+	if err != nil {
+		return model.User{}, err
+	}
+	err2 := db.Model(&res).Updates(input).Error
+	if err2 == nil {
+		return GetOneUser(res.ID)
+	}
+	return
+}
+
+func CreateUser(invoice *model.User) (err error) {
+	db, _ := model.Connect()
+	defer db.Close()
+	err = db.Model(&model.User{}).Create(invoice).Error
+	return
+}
+
+func DeleteUser(id uuid.UUID) (err error) {
+	db, _ := model.Connect()
+	defer db.Close()
+	err = db.Delete(&model.User{}, "id = ?", id).Error
+	return
+}
+
