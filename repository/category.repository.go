@@ -25,8 +25,8 @@ func GetOneCategory(id uuid.UUID) (res model.Category, err error) {
 	return
 }
 
-func UpdateCategory(itemId uuid.UUID, input map[string]interface{}) (res model.Category, err error) {
-	res.ID = itemId
+func UpdateCategory(categoryId uuid.UUID, input map[string]interface{}) (res model.Category, err error) {
+	res.ID = categoryId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateCategory(itemId uuid.UUID, input map[string]interface{}) (res model.C
 	return
 }
 
-func CreateCategory(item *model.Category) (err error) {
+func CreateCategory(category *model.Category) (pre *model.Category, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.Category{}).Create(item).Error
-	return
+	err = db.Model(&model.Category{}).Create(category).Error
+	return category, err
 }
 
 func DeleteCategory(id uuid.UUID) (err error) {

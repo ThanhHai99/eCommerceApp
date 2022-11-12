@@ -25,8 +25,8 @@ func GetOneCategoryLog(id uuid.UUID) (res model.CategoryLog, err error) {
 	return
 }
 
-func UpdateCategoryLog(itemId uuid.UUID, input map[string]interface{}) (res model.CategoryLog, err error) {
-	res.ID = itemId
+func UpdateCategoryLog(categoryLogId uuid.UUID, input map[string]interface{}) (res model.CategoryLog, err error) {
+	res.ID = categoryLogId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateCategoryLog(itemId uuid.UUID, input map[string]interface{}) (res mode
 	return
 }
 
-func CreateCategoryLog(item *model.CategoryLog) (err error) {
+func CreateCategoryLog(categoryLog *model.CategoryLog) (pre *model.CategoryLog, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.CategoryLog{}).Create(item).Error
-	return
+	err = db.Model(&model.CategoryLog{}).Create(categoryLog).Error
+	return categoryLog, err
 }
 
 func DeleteCategoryLog(id uuid.UUID) (err error) {

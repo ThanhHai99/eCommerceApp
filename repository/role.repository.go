@@ -25,8 +25,8 @@ func GetOneRole(id uuid.UUID) (res model.Role, err error) {
 	return
 }
 
-func UpdateRole(itemId uuid.UUID, input map[string]interface{}) (res model.Role, err error) {
-	res.ID = itemId
+func UpdateRole(roleId uuid.UUID, input map[string]interface{}) (res model.Role, err error) {
+	res.ID = roleId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateRole(itemId uuid.UUID, input map[string]interface{}) (res model.Role,
 	return
 }
 
-func CreateRole(item *model.Role) (err error) {
+func CreateRole(role *model.Role) (pre *model.Role, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.Role{}).Create(item).Error
-	return
+	err = db.Model(&model.Role{}).Create(role).Error
+	return role, err
 }
 
 func DeleteRole(id uuid.UUID) (err error) {

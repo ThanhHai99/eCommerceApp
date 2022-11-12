@@ -25,8 +25,8 @@ func GetOneWarehouseLog(id uuid.UUID) (res model.WarehouseLog, err error) {
 	return
 }
 
-func UpdateWarehouseLog(itemId uuid.UUID, input map[string]interface{}) (res model.WarehouseLog, err error) {
-	res.ID = itemId
+func UpdateWarehouseLog(warehouseLogId uuid.UUID, input map[string]interface{}) (res model.WarehouseLog, err error) {
+	res.ID = warehouseLogId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateWarehouseLog(itemId uuid.UUID, input map[string]interface{}) (res mod
 	return
 }
 
-func CreateWarehouseLog(item *model.WarehouseLog) (err error) {
+func CreateWarehouseLog(warehouseLog *model.WarehouseLog) (pre *model.WarehouseLog, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.WarehouseLog{}).Create(item).Error
-	return
+	err = db.Model(&model.WarehouseLog{}).Create(warehouseLog).Error
+	return warehouseLog, err
 }
 
 func DeleteWarehouseLog(id uuid.UUID) (err error) {

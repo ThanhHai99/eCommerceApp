@@ -63,8 +63,8 @@ func GetOneUser(id uuid.UUID) (res model.User, err error) {
 	return
 }
 
-func UpdateUser(invoiceId uuid.UUID, input map[string]interface{}) (res model.User, err error) {
-	res.ID = invoiceId
+func UpdateUser(userId uuid.UUID, input map[string]interface{}) (res model.User, err error) {
+	res.ID = userId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -77,10 +77,10 @@ func UpdateUser(invoiceId uuid.UUID, input map[string]interface{}) (res model.Us
 	return
 }
 
-func CreateUser(invoice *model.User) (err error) {
+func CreateUser(user *model.User) (pre *model.User, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.User{}).Create(invoice).Error
+	err = db.Model(&model.User{}).Create(user).Error
 	return
 }
 

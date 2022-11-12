@@ -25,8 +25,8 @@ func GetOneWarehouse(id uuid.UUID) (res model.Warehouse, err error) {
 	return
 }
 
-func UpdateWarehouse(itemId uuid.UUID, input map[string]interface{}) (res model.Warehouse, err error) {
-	res.ID = itemId
+func UpdateWarehouse(warehouseId uuid.UUID, input map[string]interface{}) (res model.Warehouse, err error) {
+	res.ID = warehouseId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateWarehouse(itemId uuid.UUID, input map[string]interface{}) (res model.
 	return
 }
 
-func CreateWarehouse(item *model.Warehouse) (err error) {
+func CreateWarehouse(warehouse *model.Warehouse) (pre *model.Warehouse, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.Warehouse{}).Create(item).Error
-	return
+	err = db.Model(&model.Warehouse{}).Create(warehouse).Error
+	return warehouse, err
 }
 
 func DeleteWarehouse(id uuid.UUID) (err error) {

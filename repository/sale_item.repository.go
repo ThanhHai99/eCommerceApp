@@ -25,8 +25,8 @@ func GetOneSaleItem(id uuid.UUID) (res model.SaleItem, err error) {
 	return
 }
 
-func UpdateSaleItem(itemId uuid.UUID, input map[string]interface{}) (res model.SaleItem, err error) {
-	res.ID = itemId
+func UpdateSaleItem(saleItemId uuid.UUID, input map[string]interface{}) (res model.SaleItem, err error) {
+	res.ID = saleItemId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateSaleItem(itemId uuid.UUID, input map[string]interface{}) (res model.S
 	return
 }
 
-func CreateSaleItem(item *model.SaleItem) (err error) {
+func CreateSaleItem(saleItem *model.SaleItem) (pre *model.SaleItem, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.SaleItem{}).Create(item).Error
-	return
+	err = db.Model(&model.SaleItem{}).Create(saleItem).Error
+	return saleItem, err
 }
 
 func DeleteSaleItem(id uuid.UUID) (err error) {

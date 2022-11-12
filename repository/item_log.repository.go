@@ -25,8 +25,8 @@ func GetOneItemLog(id uuid.UUID) (res model.ItemLog, err error) {
 	return
 }
 
-func UpdateItemLog(itemId uuid.UUID, input map[string]interface{}) (res model.ItemLog, err error) {
-	res.ID = itemId
+func UpdateItemLog(itemLogId uuid.UUID, input map[string]interface{}) (res model.ItemLog, err error) {
+	res.ID = itemLogId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateItemLog(itemId uuid.UUID, input map[string]interface{}) (res model.It
 	return
 }
 
-func CreateItemLog(item *model.ItemLog) (err error) {
+func CreateItemLog(itemLog *model.ItemLog) (pre *model.ItemLog, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.ItemLog{}).Create(item).Error
-	return
+	err = db.Model(&model.ItemLog{}).Create(itemLog).Error
+	return itemLog, err
 }
 
 func DeleteItemLog(id uuid.UUID) (err error) {

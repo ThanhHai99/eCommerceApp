@@ -39,11 +39,11 @@ func UpdateSaleLog(itemId uuid.UUID, input map[string]interface{}) (res model.Sa
 	return
 }
 
-func CreateSaleLog(item *model.SaleLog) (err error) {
+func CreateSaleLog(saleLog *model.SaleLog) (pre *model.SaleLog, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.SaleLog{}).Create(item).Error
-	return
+	err = db.Model(&model.SaleLog{}).Create(saleLog).Error
+	return saleLog, err
 }
 
 func DeleteSaleLog(id uuid.UUID) (err error) {

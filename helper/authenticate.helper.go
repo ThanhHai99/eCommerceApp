@@ -35,7 +35,7 @@ func CreateAccessToken(username string) (string, error) {
 	claims := &Claims{
 		username,
 		jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(30 * time.Minute).Unix(),
+			ExpiresAt: time.Now().Add(120 * time.Minute).Unix(),
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

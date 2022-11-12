@@ -25,8 +25,8 @@ func GetOneOrder(id uuid.UUID) (res model.Order, err error) {
 	return
 }
 
-func UpdateOrder(invoiceId uuid.UUID, input map[string]interface{}) (res model.Order, err error) {
-	res.ID = invoiceId
+func UpdateOrder(orderId uuid.UUID, input map[string]interface{}) (res model.Order, err error) {
+	res.ID = orderId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateOrder(invoiceId uuid.UUID, input map[string]interface{}) (res model.O
 	return
 }
 
-func CreateOrder(invoice *model.Order) (err error) {
+func CreateOrder(order *model.Order) (pre *model.Order, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.Order{}).Create(invoice).Error
-	return
+	err = db.Model(&model.Order{}).Create(order).Error
+	return order, err
 }
 
 func DeleteOrder(id uuid.UUID) (err error) {

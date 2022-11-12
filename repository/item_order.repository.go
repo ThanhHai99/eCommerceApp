@@ -25,8 +25,8 @@ func GetOneItemOrder(id uuid.UUID) (res model.ItemOrder, err error) {
 	return
 }
 
-func UpdateItemOrder(itemId uuid.UUID, input map[string]interface{}) (res model.ItemOrder, err error) {
-	res.ID = itemId
+func UpdateItemOrder(itemOrderId uuid.UUID, input map[string]interface{}) (res model.ItemOrder, err error) {
+	res.ID = itemOrderId
 	db, err := model.Connect()
 	defer db.Close()
 	if err != nil {
@@ -39,11 +39,11 @@ func UpdateItemOrder(itemId uuid.UUID, input map[string]interface{}) (res model.
 	return
 }
 
-func CreateItemOrder(item *model.ItemOrder) (err error) {
+func CreateItemOrder(itemOrder *model.ItemOrder) (pre *model.ItemOrder, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.ItemOrder{}).Create(item).Error
-	return
+	err = db.Model(&model.ItemOrder{}).Create(itemOrder).Error
+	return itemOrder, err
 }
 
 func DeleteItemOrder(id uuid.UUID) (err error) {

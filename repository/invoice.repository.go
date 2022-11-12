@@ -39,11 +39,11 @@ func UpdateInvoice(invoiceId uuid.UUID, input map[string]interface{}) (res model
 	return
 }
 
-func CreateInvoice(invoice *model.Invoice) (err error) {
+func CreateInvoice(invoice *model.Invoice) (pre *model.Invoice, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
 	err = db.Model(&model.Invoice{}).Create(invoice).Error
-	return
+	return invoice, err
 }
 
 func DeleteInvoice(id uuid.UUID) (err error) {
