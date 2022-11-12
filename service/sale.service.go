@@ -50,27 +50,30 @@ func UpdateSale(id uuid.UUID, input map[string]interface{}) (res dto.UpdateSaleR
 
 func CreateOneSale(sale dto.SaleBody, saleItem dto.SaleItemBody) (res dto.GetOneSaleRes) {
 	newSale := model.Sale{}
-	body, _ := json.Marshal(sale)
-	_ = json.Unmarshal(body, &newSale)
+	newSaleItem := model.SaleItem{}
+	body1, _ := json.Marshal(sale)
+	body2, _ := json.Marshal(saleItem)
+	_ = json.Unmarshal(body1, &newSale)
+	_ = json.Unmarshal(body2, &newSaleItem)
 	pre, err1 := repository.CreateSale(&newSale)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 
-
+	_, _ = repository.CreateSaleItem(&newSaleItem)
 
 	newSaleLog := model.SaleLog{}
 	newSaleLog.Name = pre.Name
 	newSaleLog.SaleId = pre.ID
-	newSaleLog.SaleItem = saleItem
+	newSaleLog.SaleItem = saleItem.Item
 	newSaleLog.StartDate = pre.StartDate
 	newSaleLog.EndDate = pre.EndDate
-	newSaleLog.Amount = pre.
-	newSaleLog = pre
-	newSaleLog = pre
-	newSaleLog = pre
-	newSaleLog = pre
+	newSaleLog.Amount = saleItem.Amount
+	newSaleLog.Discount = pre.Discount
+	newSaleLog.IsApplied = pre.IsApplied
+	newSaleLog.Code = pre.Code
+	newSaleLog.CreatedBy = pre.CreatedBy
 	_, _ = repository.CreateSaleLog(&newSaleLog)
 
 	res.Code = util.SUCCESS_CODE

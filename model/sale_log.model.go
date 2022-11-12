@@ -8,11 +8,11 @@ import (
 type SaleLog struct {
 	BaseModel
 	Name      string    `gorm:"not null;" json:"name"`
-	SaleItem  string    `gorm:"not null;" json:"sale_item"`
+	SaleItem  uuid.UUID `gorm:"not null;" json:"sale_item"`
 	StartDate time.Time `gorm:"not null;" json:"start_date"`
 	EndDate   time.Time `gorm:"not null;" json:"end_date"`
-	Amount    string    `gorm:"not null;" json:"amount"`
-	Discount  int8      `gorm:"not null;" json:"discount"`
+	Amount    int16     `gorm:"not null;" json:"amount"`
+	Discount  int16     `gorm:"not null;" json:"discount"`
 	IsApplied bool      `gorm:"not null;" json:"is_applied"`
 	Code      string    `gorm:"not null;" json:"code"`
 	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
