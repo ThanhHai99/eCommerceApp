@@ -18,7 +18,7 @@ func GetAllItemLog(query map[string]string) (res dto.GetAllItemLogRes) {
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneItemLog(id uuid.UUID) (res dto.GetOneItemLogRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateItemLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateIt
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -58,7 +58,7 @@ func CreateOneItemLog(item dto.ItemLogBody) (res dto.GetOneItemLogRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }
 
@@ -70,6 +70,6 @@ func DeleteItemLog(id uuid.UUID) (res dto.DeleteItemLogRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

@@ -17,12 +17,12 @@ type GetAllOrderRes struct {
 
 type GetOneOrderRes struct {
 	BaseRes
-	Data model.Order `json:"data`
+	Data *model.Order `json:"data"`
 }
 
 type UpdateOrderRes struct {
 	BaseRes
-	Data model.Order `json:"data`
+	Data *model.Order `json:"data"`
 }
 
 type DeleteOrderRes struct {

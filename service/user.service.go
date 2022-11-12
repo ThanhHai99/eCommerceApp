@@ -18,7 +18,7 @@ func GetAllUser(query map[string]string) (res dto.GetAllUserRes) {
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneUser(id uuid.UUID) (res dto.GetOneUserRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateUser(id uuid.UUID, input map[string]interface{}) (res dto.UpdateUserR
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -58,7 +58,7 @@ func CreateOneUser(item dto.UserBody) (res dto.GetOneUserRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }
 
@@ -70,6 +70,6 @@ func DeleteUser(id uuid.UUID) (res dto.DeleteUserRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

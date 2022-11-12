@@ -17,12 +17,12 @@ type GetAllWarehouseLogRes struct {
 
 type GetOneWarehouseLogRes struct {
 	BaseRes
-	Data model.WarehouseLog `json:"data`
+	Data *model.WarehouseLog `json:"data"`
 }
 
 type UpdateWarehouseLogRes struct {
 	BaseRes
-	Data model.WarehouseLog `json:"data`
+	Data *model.WarehouseLog `json:"data"`
 }
 
 type DeleteWarehouseLogRes struct {

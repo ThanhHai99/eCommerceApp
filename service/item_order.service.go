@@ -18,7 +18,7 @@ func GetAllItemOrder(query map[string]string) (res dto.GetAllItemOrderRes) {
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneItemOrder(id uuid.UUID) (res dto.GetOneItemOrderRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateItemOrder(id uuid.UUID, input map[string]interface{}) (res dto.Update
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -58,7 +58,7 @@ func CreateOneItemOrder(item dto.ItemOrderBody) (res dto.GetOneItemOrderRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }
 
@@ -70,6 +70,6 @@ func DeleteItemOrder(id uuid.UUID) (res dto.DeleteItemOrderRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

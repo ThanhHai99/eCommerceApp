@@ -17,12 +17,12 @@ type GetAllCategoryLogRes struct {
 
 type GetOneCategoryLogRes struct {
 	BaseRes
-	Data model.CategoryLog `json:"data`
+	Data *model.CategoryLog `json:"data"`
 }
 
 type UpdateCategoryLogRes struct {
 	BaseRes
-	Data model.CategoryLog `json:"data`
+	Data *model.CategoryLog `json:"data"`
 }
 
 type DeleteCategoryLogRes struct {

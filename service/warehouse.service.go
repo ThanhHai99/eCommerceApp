@@ -18,7 +18,7 @@ func GetAllWarehouse(query map[string]string) (res dto.GetAllWarehouseRes) {
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneWarehouse(id uuid.UUID) (res dto.GetOneWarehouseRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateWarehouse(id uuid.UUID, input map[string]interface{}) (res dto.Update
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -58,7 +58,7 @@ func CreateOneWarehouse(item dto.WarehouseBody) (res dto.GetOneWarehouseRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }
 
@@ -70,6 +70,6 @@ func DeleteWarehouse(id uuid.UUID) (res dto.DeleteWarehouseRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

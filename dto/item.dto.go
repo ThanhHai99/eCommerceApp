@@ -18,12 +18,12 @@ type GetAllItemRes struct {
 
 type GetOneItemRes struct {
 	BaseRes
-	Data model.Item `json:"data`
+	Data *model.Item `json:"data"`
 }
 
 type UpdateItemRes struct {
 	BaseRes
-	Data model.Item `json:"data`
+	Data *model.Item `json:"data"`
 }
 
 type DeleteItemRes struct {

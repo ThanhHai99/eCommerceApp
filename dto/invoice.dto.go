@@ -17,12 +17,12 @@ type GetAllInvoiceRes struct {
 
 type GetOneInvoiceRes struct {
 	BaseRes
-	Data model.Invoice `json:"data`
+	Data *model.Invoice `json:"data"`
 }
 
 type UpdateInvoiceRes struct {
 	BaseRes
-	Data model.Invoice `json:"data`
+	Data *model.Invoice `json:"data"`
 }
 
 type DeleteInvoiceRes struct {

@@ -18,7 +18,7 @@ func GetAllWarehouseLog(query map[string]string) (res dto.GetAllWarehouseLogRes)
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneWarehouseLog(id uuid.UUID) (res dto.GetOneWarehouseLogRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateWarehouseLog(id uuid.UUID, input map[string]interface{}) (res dto.Upd
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -58,7 +58,7 @@ func CreateOneWarehouseLog(item dto.WarehouseLogBody) (res dto.GetOneWarehouseLo
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }
 
@@ -70,6 +70,6 @@ func DeleteWarehouseLog(id uuid.UUID) (res dto.DeleteWarehouseLogRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

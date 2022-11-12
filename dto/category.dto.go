@@ -17,12 +17,12 @@ type GetAllCategoryRes struct {
 
 type GetOneCategoryRes struct {
 	BaseRes
-	Data model.Category `json:"data`
+	Data *model.Category `json:"data"`
 }
 
 type UpdateCategoryRes struct {
 	BaseRes
-	Data model.Category `json:"data`
+	Data *model.Category `json:"data"`
 }
 
 type DeleteCategoryRes struct {

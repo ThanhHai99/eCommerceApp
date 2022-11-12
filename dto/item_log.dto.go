@@ -17,12 +17,12 @@ type GetAllItemLogRes struct {
 
 type GetOneItemLogRes struct {
 	BaseRes
-	Data model.ItemLog `json:"data`
+	Data *model.ItemLog `json:"data"`
 }
 
 type UpdateItemLogRes struct {
 	BaseRes
-	Data model.ItemLog `json:"data`
+	Data *model.ItemLog `json:"data"`
 }
 
 type DeleteItemLogRes struct {

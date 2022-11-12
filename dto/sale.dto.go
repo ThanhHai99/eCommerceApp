@@ -17,12 +17,12 @@ type GetAllSaleRes struct {
 
 type GetOneSaleRes struct {
 	BaseRes
-	Data model.Sale `json:"data`
+	Data *model.Sale `json:"data"`
 }
 
 type UpdateSaleRes struct {
 	BaseRes
-	Data model.Sale `json:"data`
+	Data *model.Sale `json:"data"`
 }
 
 type DeleteSaleRes struct {

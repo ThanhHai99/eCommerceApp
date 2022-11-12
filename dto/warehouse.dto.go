@@ -17,12 +17,12 @@ type GetAllWarehouseRes struct {
 
 type GetOneWarehouseRes struct {
 	BaseRes
-	Data model.Warehouse `json:"data`
+	Data *model.Warehouse `json:"data"`
 }
 
 type UpdateWarehouseRes struct {
 	BaseRes
-	Data model.Warehouse `json:"data`
+	Data *model.Warehouse `json:"data"`
 }
 
 type DeleteWarehouseRes struct {

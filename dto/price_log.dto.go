@@ -17,12 +17,12 @@ type GetAllPriceLogRes struct {
 
 type GetOnePriceLogRes struct {
 	BaseRes
-	Data model.PriceLog `json:"data`
+	Data *model.PriceLog `json:"data"`
 }
 
 type UpdatePriceLogRes struct {
 	BaseRes
-	Data model.PriceLog `json:"data`
+	Data *model.PriceLog `json:"data"`
 }
 
 type DeletePriceLogRes struct {

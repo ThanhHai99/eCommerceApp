@@ -17,12 +17,12 @@ type GetAllRoleRes struct {
 
 type GetOneRoleRes struct {
 	BaseRes
-	Data model.Role `json:"data`
+	Data *model.Role `json:"data"`
 }
 
 type UpdateRoleRes struct {
 	BaseRes
-	Data model.Role `json:"data`
+	Data *model.Role `json:"data"`
 }
 
 type DeleteRoleRes struct {

@@ -5,6 +5,7 @@ import (
 )
 
 func SetupRouter(rootRoute *gin.RouterGroup) {
+	SwaggerRoutes(rootRoute)
 	HealthCheckRoutes(rootRoute)
 	AuthenticateRoutes(rootRoute)
 	ItemRoutes(rootRoute)

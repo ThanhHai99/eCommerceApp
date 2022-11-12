@@ -18,7 +18,7 @@ func GetAllItem(query map[string]string) (res dto.GetAllItemRes) {
 	}
 	dataRes.Data = record
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	res.Data = dataRes
 	return
 }
@@ -30,8 +30,8 @@ func GetOneItem(id uuid.UUID) (res dto.GetOneItemRes) {
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = record
+	res.Message = "successfully"
+	res.Data = &record
 	return
 }
 
@@ -43,8 +43,8 @@ func UpdateItem(id uuid.UUID, input map[string]interface{}) (res dto.UpdateItemR
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
-	res.Data = item
+	res.Message = "successfully"
+	res.Data = &item
 	return
 }
 
@@ -52,13 +52,14 @@ func CreateOneItem(item dto.ItemBody) (res dto.GetOneItemRes) {
 	newItem := model.Item{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newItem)
-	err1 := repository.CreateItem(&newItem)
+	pre, err1 := repository.CreateItem(&newItem)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 
@@ -70,6 +71,6 @@ func DeleteItem(id uuid.UUID) (res dto.DeleteItemRes) {
 		return
 	}
 	res.Code = util.SUCCESS_CODE
-	res.Message = "Successfully"
+	res.Message = "successfully"
 	return
 }

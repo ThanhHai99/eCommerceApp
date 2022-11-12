@@ -4,7 +4,6 @@ import (
 	"eCommerce/dto"
 	"eCommerce/helper"
 	"eCommerce/util"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -24,7 +23,7 @@ func ValidateAccessToken() gin.HandlerFunc {
 		accessToken := strings.Split(strings.TrimSpace(authHeader), " ")
 		isAccessTokenValid := helper.ValidateToken(accessToken[1])
 		if isAccessTokenValid == true {
-			fmt.Println("token dung roi ba")
+			c.Next()
 		} else {
 			res.Code = util.FAIL_CODE
 			res.Message = "Token is not valid"

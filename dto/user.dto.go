@@ -17,12 +17,12 @@ type GetAllUserRes struct {
 
 type GetOneUserRes struct {
 	BaseRes
-	Data model.User `json:"data`
+	Data *model.User `json:"data"`
 }
 
 type UpdateUserRes struct {
 	BaseRes
-	Data model.User `json:"data`
+	Data *model.User `json:"data"`
 }
 
 type DeleteUserRes struct {

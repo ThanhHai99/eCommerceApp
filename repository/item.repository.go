@@ -39,11 +39,11 @@ func UpdateItem(itemId uuid.UUID, input map[string]interface{}) (res model.Item,
 	return
 }
 
-func CreateItem(item *model.Item) (err error) {
+func CreateItem(item *model.Item) (pre *model.Item, err error) {
 	db, _ := model.Connect()
 	defer db.Close()
-	err = db.Model(&model.Item{}).Create(item).Error
-	return
+	err = db.Model(model.Item{}).Create(item).Error
+	return item, err
 }
 
 func DeleteItem(id uuid.UUID) (err error) {

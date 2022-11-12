@@ -17,12 +17,12 @@ type GetAllSaleItemRes struct {
 
 type GetOneSaleItemRes struct {
 	BaseRes
-	Data model.SaleItem `json:"data`
+	Data *model.SaleItem `json:"data"`
 }
 
 type UpdateSaleItemRes struct {
 	BaseRes
-	Data model.SaleItem `json:"data`
+	Data *model.SaleItem `json:"data"`
 }
 
 type DeleteSaleItemRes struct {
