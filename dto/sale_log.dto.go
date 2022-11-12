@@ -2,6 +2,8 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
+	"time"
 )
 
 type GetAllSaleLogDataRes struct {
@@ -30,10 +32,14 @@ type DeleteSaleLogRes struct {
 }
 
 type SaleLogBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//SaleLogManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	Name      string    `json:"name"`
+	SaleItem  uuid.UUID `json:"sale_item"`
+	StartDate time.Time `json:"start_date"`
+	EndDate   time.Time `json:"end_date"`
+	Amount    int16     `json:"amount"`
+	Discount  int16     `json:"discount"`
+	IsApplied bool      `json:"is_applied"`
+	Code      string    `json:"code"`
+	CreatedBy uuid.UUID `json:"created_by"`
+	Sale      uuid.UUID `json:"sale"`
 }

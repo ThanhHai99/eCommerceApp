@@ -60,7 +60,9 @@ func CreateOneCategory(category dto.CategoryBody) (res dto.GetOneCategoryRes) {
 
 	newCategoryLog := model.CategoryLog{}
 	newCategoryLog.Name = newCategory.Name
-	repository.CreateCategoryLog(&newCategoryLog)
+	newCategoryLog.CreatedBy = newCategory.CreatedBy
+	newCategoryLog.CategoryID = pre.ID
+	_, _ = repository.CreateCategoryLog(&newCategoryLog)
 
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"

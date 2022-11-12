@@ -2,6 +2,7 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
 )
 
 type GetAllUserDataRes struct {
@@ -30,10 +31,13 @@ type DeleteUserRes struct {
 }
 
 type UserBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//UserManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	UserName    string    `json:"user_name"`
+	Password    string    `json:"password"`
+	Name        string    `json:"name"`
+	Phone       string    `json:"phone"`
+	Address     string    `json:"address"`
+	IsLocked    bool      `json:"is_locked"`
+	Role        uuid.UUID `json:"role"`
+	VerifyToken string    `json:"verify_token"`
+	IsActive    bool      `json:"is_active"`
 }

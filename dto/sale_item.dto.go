@@ -2,6 +2,7 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
 )
 
 type GetAllSaleItemDataRes struct {
@@ -30,10 +31,7 @@ type DeleteSaleItemRes struct {
 }
 
 type SaleItemBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//SaleItemManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	Item   uuid.UUID `json:"item"`
+	Amount int16     `json:"amount"`
+	Sale   uuid.UUID `json:"sale"`
 }

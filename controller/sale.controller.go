@@ -46,9 +46,11 @@ func UpdateSale(c *gin.Context) {
 }
 
 func CreateOneSale(c *gin.Context) {
-	input := dto.SaleBody{}
-	_ = c.BindJSON(&input)
-	res := service.CreateOneSale(input)
+	input1 := dto.SaleBody{}
+	input2 := dto.SaleItemBody{}
+	_ = c.BindJSON(&input1)
+	_ = c.BindJSON(&input2)
+	res := service.CreateOneSale(input1, input2)
 
 	if res.Code == util.FAIL_CODE {
 		c.JSON(http.StatusBadRequest, res)

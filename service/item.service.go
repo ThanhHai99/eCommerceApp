@@ -57,6 +57,22 @@ func CreateOneItem(item dto.ItemBody) (res dto.GetOneItemRes) {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
+
+	newItemLog := model.ItemLog{}
+	newItemLog.ItemId = pre.ID
+	newItemLog.Name = pre.Name
+	newItemLog.CategoryId = pre.CategoryID
+	newItemLog.Detail = pre.Detail
+	newItemLog.UserManual = pre.UserManual
+	newItemLog.CreatedBy = pre.CreatedBy
+	_, _ = repository.CreateItemLog(&newItemLog)
+
+	newPriceLog := model.PriceLog{}
+	newPriceLog.ItemId = pre.ID
+	newPriceLog.Price = pre.Price
+	newPriceLog.CreatedBy = pre.CreatedBy
+	_, _ = repository.CreatePriceLog(&newPriceLog)
+
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
 	res.Data = pre

@@ -2,6 +2,7 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
 )
 
 type GetAllCategoryLogDataRes struct {
@@ -30,10 +31,7 @@ type DeleteCategoryLogRes struct {
 }
 
 type CategoryLogBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//CategoryLogManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	Name      string    `json:"name"`
+	Category  uuid.UUID `json:"category"`
+	CreatedBy uuid.UUID `json:"created_by"`
 }

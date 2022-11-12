@@ -2,11 +2,12 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
 )
 
 type GetAllOrderDataRes struct {
-	Total int16        `json:"total"`
-	Page  int16        `json:"page"`
+	Total int16         `json:"total"`
+	Page  int16         `json:"page"`
 	Data  []model.Order `json:"data"`
 }
 
@@ -30,10 +31,9 @@ type DeleteOrderRes struct {
 }
 
 type OrderBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//UserManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	DeliveryAddress string    `json:"delivery_address"`
+	PaymentMethod   string    `json:"payment_method"`
+	Paid            bool      `json:"paid"`
+	Cost            int16     `json:"cost"`
+	CreatedBy       uuid.UUID `json:"created_by"`
 }

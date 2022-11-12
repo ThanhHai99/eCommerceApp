@@ -4,9 +4,9 @@ import "github.com/google/uuid"
 
 type CategoryLog struct {
 	BaseModel
-	Name      string    `gorm:"not null;" json:"name"`
-	Category  uuid.UUID `gorm:"not null;" json:"category"`
-	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
+	Name       string    `gorm:"not null;" json:"name"`
+	CategoryID uuid.UUID `gorm:"not null;" json:"category_id"`
+	CreatedBy  uuid.UUID `gorm:"not null;" json:"created_by"`
 }
 
 func (CategoryLog) TableName() string {

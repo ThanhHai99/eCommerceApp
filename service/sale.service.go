@@ -48,7 +48,7 @@ func UpdateSale(id uuid.UUID, input map[string]interface{}) (res dto.UpdateSaleR
 	return
 }
 
-func CreateOneSale(sale dto.SaleBody) (res dto.GetOneSaleRes) {
+func CreateOneSale(sale dto.SaleBody, saleItem dto.SaleItemBody) (res dto.GetOneSaleRes) {
 	newSale := model.Sale{}
 	body, _ := json.Marshal(sale)
 	_ = json.Unmarshal(body, &newSale)
@@ -57,6 +57,22 @@ func CreateOneSale(sale dto.SaleBody) (res dto.GetOneSaleRes) {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
+
+
+
+	newSaleLog := model.SaleLog{}
+	newSaleLog.Name = pre.Name
+	newSaleLog.SaleId = pre.ID
+	newSaleLog.SaleItem = saleItem
+	newSaleLog.StartDate = pre.StartDate
+	newSaleLog.EndDate = pre.EndDate
+	newSaleLog.Amount = pre.
+	newSaleLog = pre
+	newSaleLog = pre
+	newSaleLog = pre
+	newSaleLog = pre
+	_, _ = repository.CreateSaleLog(&newSaleLog)
+
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
 	res.Data = pre
