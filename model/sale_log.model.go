@@ -13,7 +13,7 @@ type SaleLog struct {
 	EndDate   time.Time `gorm:"not null;" json:"end_date"`
 	Amount    string    `gorm:"not null;" json:"amount"`
 	Discount  int8      `gorm:"not null;" json:"discount"`
-	Applied   bool      `gorm:"not null;" json:"applied"`
+	IsApplied bool      `gorm:"not null;" json:"is_applied"`
 	Code      string    `gorm:"not null;" json:"code"`
 	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
 	SaleId    uuid.UUID `gorm:"not null;" json:"sale_id"`

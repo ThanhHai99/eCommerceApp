@@ -4,10 +4,11 @@ import "github.com/google/uuid"
 
 type Invoice struct {
 	BaseModel
-	Name  string    `gorm:"not null;" json:"name"`
-	Phone string    `gorm:"not null;" json:"phone"`
-	Cost  int16     `gorm:"not null;" json:"cost"`
-	Order uuid.UUID `gorm:"not null;" json:"order"`
+	Name      string    `gorm:"not null;" json:"name"`
+	Phone     string    `gorm:"not null;" json:"phone"`
+	Cost      int16     `gorm:"not null;" json:"cost"`
+	OrderID   uuid.UUID `gorm:"not null;" json:"order_id"`
+	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
 }
 
 func (Invoice) TableName() string {

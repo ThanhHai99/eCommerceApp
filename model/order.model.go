@@ -9,7 +9,6 @@ type Order struct {
 	Paid            bool      `gorm:"default:false" json:"paid"`
 	Cost            int16     `gorm:"not null" json:"cost"`
 	CreatedBy       uuid.UUID `json:"created_by"`
-	UserId          uuid.UUID `gorm:"not null;" json:"user_id"`
 }
 
 func (Order) TableName() string {

@@ -11,9 +11,9 @@ type Sale struct {
 	StartDate time.Time `gorm:"not null;" json:"start_date"`
 	EndDate   time.Time `gorm:"not null;" json:"end_date"`
 	Discount  int16     `gorm:"not null;" json:"discount"`
-	Applied   bool      `gorm:"not null;" json:"applied"`
+	IsApplied bool      `gorm:"not null,default:false" json:"is_applied"`
 	Code      string    `gorm:"not null,unique;" json:"code"`
-	UserId    uuid.UUID `gorm:"not null;" json:"user_id"`
+	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
 }
 
 func (Sale) TableName() string {
