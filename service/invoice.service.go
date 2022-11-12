@@ -52,13 +52,14 @@ func CreateOneInvoice(item dto.InvoiceBody) (res dto.GetOneInvoiceRes) {
 	newInvoice := model.Invoice{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newInvoice)
-	err1 := repository.CreateInvoice(&newInvoice)
+	pre, err1 := repository.CreateInvoice(&newInvoice)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

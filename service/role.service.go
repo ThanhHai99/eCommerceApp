@@ -48,17 +48,18 @@ func UpdateRole(id uuid.UUID, input map[string]interface{}) (res dto.UpdateRoleR
 	return
 }
 
-func CreateOneRole(item dto.RoleBody) (res dto.GetOneRoleRes) {
+func CreateOneRole(role dto.RoleBody) (res dto.GetOneRoleRes) {
 	newRole := model.Role{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(role)
 	_ = json.Unmarshal(body, &newRole)
-	err1 := repository.CreateRole(&newRole)
+	pre, err1 := repository.CreateRole(&newRole)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

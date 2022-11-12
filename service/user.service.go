@@ -48,17 +48,18 @@ func UpdateUser(id uuid.UUID, input map[string]interface{}) (res dto.UpdateUserR
 	return
 }
 
-func CreateOneUser(item dto.UserBody) (res dto.GetOneUserRes) {
+func CreateOneUser(user dto.UserBody) (res dto.GetOneUserRes) {
 	newUser := model.User{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(user)
 	_ = json.Unmarshal(body, &newUser)
-	err1 := repository.CreateUser(&newUser)
+	pre, err1 := repository.CreateUser(&newUser)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

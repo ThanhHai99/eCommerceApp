@@ -48,17 +48,18 @@ func UpdateOrder(id uuid.UUID, input map[string]interface{}) (res dto.UpdateOrde
 	return
 }
 
-func CreateOneOrder(item dto.OrderBody) (res dto.GetOneOrderRes) {
+func CreateOneOrder(order dto.OrderBody) (res dto.GetOneOrderRes) {
 	newOrder := model.Order{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(order)
 	_ = json.Unmarshal(body, &newOrder)
-	err1 := repository.CreateOrder(&newOrder)
+	pre, err1 := repository.CreateOrder(&newOrder)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

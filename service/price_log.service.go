@@ -48,17 +48,18 @@ func UpdatePriceLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateP
 	return
 }
 
-func CreateOnePriceLog(item dto.PriceLogBody) (res dto.GetOnePriceLogRes) {
+func CreateOnePriceLog(priceLog dto.PriceLogBody) (res dto.GetOnePriceLogRes) {
 	newPriceLog := model.PriceLog{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(priceLog)
 	_ = json.Unmarshal(body, &newPriceLog)
-	err1 := repository.CreatePriceLog(&newPriceLog)
+	pre, err1 := repository.CreatePriceLog(&newPriceLog)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

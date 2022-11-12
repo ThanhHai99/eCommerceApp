@@ -48,17 +48,18 @@ func UpdateWarehouseLog(id uuid.UUID, input map[string]interface{}) (res dto.Upd
 	return
 }
 
-func CreateOneWarehouseLog(item dto.WarehouseLogBody) (res dto.GetOneWarehouseLogRes) {
+func CreateOneWarehouseLog(warehouseLog dto.WarehouseLogBody) (res dto.GetOneWarehouseLogRes) {
 	newWarehouseLog := model.WarehouseLog{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(warehouseLog)
 	_ = json.Unmarshal(body, &newWarehouseLog)
-	err1 := repository.CreateWarehouseLog(&newWarehouseLog)
+	pre, err1 := repository.CreateWarehouseLog(&newWarehouseLog)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

@@ -52,13 +52,14 @@ func CreateOneCategoryLog(item dto.CategoryLogBody) (res dto.GetOneCategoryLogRe
 	newCategoryLog := model.CategoryLog{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newCategoryLog)
-	err1 := repository.CreateCategoryLog(&newCategoryLog)
+	pre, err1 := repository.CreateCategoryLog(&newCategoryLog)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

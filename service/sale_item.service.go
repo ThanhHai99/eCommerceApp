@@ -48,17 +48,18 @@ func UpdateSaleItem(id uuid.UUID, input map[string]interface{}) (res dto.UpdateS
 	return
 }
 
-func CreateOneSaleItem(item dto.SaleItemBody) (res dto.GetOneSaleItemRes) {
+func CreateOneSaleItem(saleItem dto.SaleItemBody) (res dto.GetOneSaleItemRes) {
 	newSaleItem := model.SaleItem{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(saleItem)
 	_ = json.Unmarshal(body, &newSaleItem)
-	err1 := repository.CreateSaleItem(&newSaleItem)
+	pre, err1 := repository.CreateSaleItem(&newSaleItem)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

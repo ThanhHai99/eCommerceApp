@@ -48,17 +48,18 @@ func UpdateSaleLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateSa
 	return
 }
 
-func CreateOneSaleLog(item dto.SaleLogBody) (res dto.GetOneSaleLogRes) {
+func CreateOneSaleLog(saleLog dto.SaleLogBody) (res dto.GetOneSaleLogRes) {
 	newSaleLog := model.SaleLog{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(saleLog)
 	_ = json.Unmarshal(body, &newSaleLog)
-	err1 := repository.CreateSaleLog(&newSaleLog)
+	pre, err1 := repository.CreateSaleLog(&newSaleLog)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

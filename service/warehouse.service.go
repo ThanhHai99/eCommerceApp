@@ -48,17 +48,18 @@ func UpdateWarehouse(id uuid.UUID, input map[string]interface{}) (res dto.Update
 	return
 }
 
-func CreateOneWarehouse(item dto.WarehouseBody) (res dto.GetOneWarehouseRes) {
+func CreateOneWarehouse(warehouse dto.WarehouseBody) (res dto.GetOneWarehouseRes) {
 	newWarehouse := model.Warehouse{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(warehouse)
 	_ = json.Unmarshal(body, &newWarehouse)
-	err1 := repository.CreateWarehouse(&newWarehouse)
+	pre, err1 := repository.CreateWarehouse(&newWarehouse)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

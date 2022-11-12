@@ -48,17 +48,18 @@ func UpdateItemOrder(id uuid.UUID, input map[string]interface{}) (res dto.Update
 	return
 }
 
-func CreateOneItemOrder(item dto.ItemOrderBody) (res dto.GetOneItemOrderRes) {
+func CreateOneItemOrder(itemOrder dto.ItemOrderBody) (res dto.GetOneItemOrderRes) {
 	newItemOrder := model.ItemOrder{}
-	body, _ := json.Marshal(item)
+	body, _ := json.Marshal(itemOrder)
 	_ = json.Unmarshal(body, &newItemOrder)
-	err1 := repository.CreateItemOrder(&newItemOrder)
+	pre, err1 := repository.CreateItemOrder(&newItemOrder)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 

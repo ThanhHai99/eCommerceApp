@@ -52,13 +52,14 @@ func CreateOneCategory(item dto.CategoryBody) (res dto.GetOneCategoryRes) {
 	newCategory := model.Category{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newCategory)
-	err1 := repository.CreateCategory(&newCategory)
+	pre, err1 := repository.CreateCategory(&newCategory)
 	if err1 != nil {
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
+	res.Data = pre
 	return
 }
 
