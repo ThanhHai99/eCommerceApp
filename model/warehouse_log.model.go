@@ -7,13 +7,13 @@ import (
 
 type WarehouseLog struct {
 	BaseModel
-	Status         bool      `gorm:"not null;" json:"status"`
+	Status         string    `gorm:"not null;" json:"status"`
 	Price          int16     `gorm:"not null;" json:"price"`
 	ExpirationDate time.Time `gorm:"not null;" json:"expiration_date"`
 	Amount         int16     `gorm:"not null;" json:"amount"`
 	CreatedBy      uuid.UUID `gorm:"not null;" json:"created_by"`
-	WarehouseId    uuid.UUID `gorm:"not null;" json:"warehouse_id"`
-	ItemId         uuid.UUID `gorm:"not null;" json:"item_id"`
+	Warehouse      uuid.UUID `gorm:"not null;" json:"warehouse"`
+	Item           uuid.UUID `gorm:"not null;" json:"item"`
 }
 
 func (WarehouseLog) TableName() string {

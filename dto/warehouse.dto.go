@@ -2,6 +2,8 @@ package dto
 
 import (
 	"eCommerce/model"
+	"github.com/google/uuid"
+	"time"
 )
 
 type GetAllWarehouseDataRes struct {
@@ -30,10 +32,9 @@ type DeleteWarehouseRes struct {
 }
 
 type WarehouseBody struct {
-	//Name       string    `json:"name"`
-	//Category   uuid.UUID `json:"category"`
-	//Detail     string    `json:"detail"`
-	//WarehouseManual string    `json:"user_manual"`
-	//Price      int16     `json:"price"`
-	//CreatedBy  uuid.UUID `json:"created_by"`
+	ExpirationDate []time.Time `json:"expiration_date"`
+	Amount         []int16     `json:"amount"`
+	Price          []int16     `json:"price"`
+	Item           []uuid.UUID `json:"item"`
+	CreatedBy      uuid.UUID   `json:"created_by"`
 }

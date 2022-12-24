@@ -57,6 +57,19 @@ func CreateOneWarehouse(warehouse dto.WarehouseBody) (res dto.GetOneWarehouseRes
 		res.Code = util.FAIL_CODE
 		res.Message = "Server error"
 	}
+
+	newWarehouseLog := model.WarehouseLog{}
+	newWarehouseLog.Status = "+"
+	//newWarehouseLog.Price =
+	newWarehouseLog.Warehouse = pre.ID
+	//newWarehouseLog.Item =
+	//newWarehouseLog.Amount =
+	//newWarehouseLog.ExpirationDate =
+	//newWarehouseLog.ExpirationDate =
+	newWarehouseLog.CreatedBy = warehouse.CreatedBy
+
+	_, _ = repository.CreateWarehouseLog(&newWarehouseLog)
+
 	res.Code = util.SUCCESS_CODE
 	res.Message = "successfully"
 	res.Data = pre

@@ -7,7 +7,7 @@ import (
 
 type Warehouse struct {
 	BaseModel
-	ItemId         uuid.UUID `gorm:"not null;" json:"item_id"`
+	Item           uuid.UUID `gorm:"not null;" json:"item"`
 	ExpirationDate time.Time `gorm:"not null;" json:"expiration_date"`
 	Amount         int16     `gorm:"not null;" json:"amount"`
 }
