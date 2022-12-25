@@ -48,7 +48,7 @@ func UpdateItem(id uuid.UUID, input map[string]interface{}) (res dto.UpdateItemR
 	return
 }
 
-func CreateOneItem(item dto.ItemBody) (res dto.GetOneItemRes) {
+func CreateOneItem(item dto.CreateItemBody) (res dto.GetOneItemRes) {
 	newItem := model.Item{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newItem)

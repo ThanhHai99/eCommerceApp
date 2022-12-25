@@ -48,7 +48,7 @@ func UpdateSale(id uuid.UUID, input map[string]interface{}) (res dto.UpdateSaleR
 	return
 }
 
-func CreateOneSale(sale dto.SaleBody, saleItem dto.SaleItemBody) (res dto.GetOneSaleRes) {
+func CreateOneSale(sale dto.CreateSaleBody, saleItem dto.CreateSaleItemBody) (res dto.GetOneSaleRes) {
 	newSale := model.Sale{}
 	newSaleItem := model.SaleItem{}
 	body1, _ := json.Marshal(sale)
@@ -66,7 +66,7 @@ func CreateOneSale(sale dto.SaleBody, saleItem dto.SaleItemBody) (res dto.GetOne
 	newSaleLog := model.SaleLog{}
 	newSaleLog.Name = pre.Name
 	newSaleLog.SaleID = pre.ID
-	newSaleLog.SaleItem = saleItem.Item
+	newSaleLog.SaleItem = saleItem.ItemID
 	newSaleLog.StartDate = pre.StartDate
 	newSaleLog.EndDate = pre.EndDate
 	newSaleLog.Amount = saleItem.Amount

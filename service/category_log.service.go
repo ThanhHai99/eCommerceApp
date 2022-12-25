@@ -48,7 +48,7 @@ func UpdateCategoryLog(id uuid.UUID, input map[string]interface{}) (res dto.Upda
 	return
 }
 
-func CreateOneCategoryLog(item dto.CategoryLogBody) (res dto.GetOneCategoryLogRes) {
+func CreateOneCategoryLog(item dto.CreateCategoryLogBody) (res dto.GetOneCategoryLogRes) {
 	newCategoryLog := model.CategoryLog{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newCategoryLog)

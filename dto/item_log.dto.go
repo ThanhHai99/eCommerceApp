@@ -6,6 +6,7 @@ import (
 )
 
 type GetAllItemLogDataRes struct {
+	BaseRes
 	Total int16           `json:"total"`
 	Page  int16           `json:"page"`
 	Data  []model.ItemLog `json:"data"`
@@ -30,11 +31,10 @@ type DeleteItemLogRes struct {
 	BaseRes
 }
 
-type ItemLogBody struct {
+type CreateItemLogBody struct {
 	Name       string    `json:"name"`
 	Detail     string    `json:"detail"`
 	UserManual string    `json:"user_manual"`
-	CreatedBy  uuid.UUID `json:"created_by"`
-	Category   uuid.UUID `json:"category"`
-	Item       uuid.UUID `json:"item"`
+	CategoryID uuid.UUID `json:"category_id"`
+	ItemID     uuid.UUID `json:"item_id"`
 }

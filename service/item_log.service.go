@@ -48,7 +48,7 @@ func UpdateItemLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateIt
 	return
 }
 
-func CreateOneItemLog(item dto.ItemLogBody) (res dto.GetOneItemLogRes) {
+func CreateOneItemLog(item dto.CreateItemLogBody) (res dto.GetOneItemLogRes) {
 	newItemLog := model.ItemLog{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newItemLog)

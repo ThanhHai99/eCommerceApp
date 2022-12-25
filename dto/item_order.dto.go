@@ -6,6 +6,7 @@ import (
 )
 
 type GetAllItemOrderDataRes struct {
+	BaseRes
 	Total int16             `json:"total"`
 	Page  int16             `json:"page"`
 	Data  []model.ItemOrder `json:"data"`
@@ -30,8 +31,8 @@ type DeleteItemOrderRes struct {
 	BaseRes
 }
 
-type ItemOrderBody struct {
-	Item   uuid.UUID `json:"item"`
-	Amount int16     `json:"amount"`
-	Order  uuid.UUID `json:"order"`
+type CreateItemOrderBody struct {
+	ItemID  uuid.UUID `json:"item_id"`
+	Amount  int16     `json:"amount"`
+	OrderID uuid.UUID `json:"order_id"`
 }

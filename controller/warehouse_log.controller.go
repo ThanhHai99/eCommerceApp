@@ -46,7 +46,7 @@ func UpdateWarehouseLog(c *gin.Context) {
 }
 
 func CreateOneWarehouseLog(c *gin.Context) {
-	input := dto.WarehouseLogBody{}
+	input := dto.CreateWarehouseLogBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneWarehouseLog(input)
 

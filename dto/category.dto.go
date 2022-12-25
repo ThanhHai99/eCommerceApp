@@ -2,10 +2,10 @@ package dto
 
 import (
 	"eCommerce/model"
-	"github.com/google/uuid"
 )
 
 type GetAllCategoryDataRes struct {
+	BaseRes
 	Total int16            `json:"total"`
 	Page  int16            `json:"page"`
 	Data  []model.Category `json:"data"`
@@ -30,7 +30,10 @@ type DeleteCategoryRes struct {
 	BaseRes
 }
 
-type CategoryBody struct {
-	Name      string    `json:"name"`
-	CreatedBy uuid.UUID `json:"created_by"`
+type CreateCategoryBody struct {
+	Name string `json:"name"`
+}
+
+type UpdateCategoryBody struct {
+	CreateCategoryBody
 }

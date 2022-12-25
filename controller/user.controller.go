@@ -46,7 +46,7 @@ func UpdateUser(c *gin.Context) {
 }
 
 func CreateOneUser(c *gin.Context) {
-	input := dto.UserBody{}
+	input := dto.CreateUserBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneUser(input)
 

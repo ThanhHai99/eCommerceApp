@@ -5,6 +5,7 @@ import (
 )
 
 type GetAllRoleDataRes struct {
+	BaseRes
 	Total int16        `json:"total"`
 	Page  int16        `json:"page"`
 	Data  []model.Role `json:"data"`

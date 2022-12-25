@@ -48,7 +48,7 @@ func UpdateWarehouse(id uuid.UUID, input map[string]interface{}) (res dto.Update
 	return
 }
 
-func CreateOneWarehouse(warehouse dto.WarehouseBody) (res dto.GetOneWarehouseRes) {
+func CreateOneWarehouse(warehouse dto.CreateImportingBody) (res dto.GetOneWarehouseRes) {
 	newWarehouse := model.Warehouse{}
 	body, _ := json.Marshal(warehouse)
 	_ = json.Unmarshal(body, &newWarehouse)
@@ -66,7 +66,7 @@ func CreateOneWarehouse(warehouse dto.WarehouseBody) (res dto.GetOneWarehouseRes
 	//newWarehouseLog.Amount =
 	//newWarehouseLog.ExpirationDate =
 	//newWarehouseLog.ExpirationDate =
-	newWarehouseLog.CreatedBy = warehouse.CreatedBy
+	//newWarehouseLog.CreatedBy = warehouse.CreatedBy
 
 	_, _ = repository.CreateWarehouseLog(&newWarehouseLog)
 

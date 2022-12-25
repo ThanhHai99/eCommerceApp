@@ -46,7 +46,7 @@ func UpdateItemOrder(c *gin.Context) {
 }
 
 func CreateOneItemOrder(c *gin.Context) {
-	input := dto.ItemOrderBody{}
+	input := dto.CreateItemOrderBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneItemOrder(input)
 

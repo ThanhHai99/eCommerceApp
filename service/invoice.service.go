@@ -48,7 +48,7 @@ func UpdateInvoice(id uuid.UUID, input map[string]interface{}) (res dto.UpdateIn
 	return
 }
 
-func CreateOneInvoice(item dto.InvoiceBody) (res dto.GetOneInvoiceRes) {
+func CreateOneInvoice(item dto.CreateInvoiceBody) (res dto.GetOneInvoiceRes) {
 	newInvoice := model.Invoice{}
 	body, _ := json.Marshal(item)
 	_ = json.Unmarshal(body, &newInvoice)

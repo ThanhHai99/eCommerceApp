@@ -48,7 +48,7 @@ func UpdateUser(id uuid.UUID, input map[string]interface{}) (res dto.UpdateUserR
 	return
 }
 
-func CreateOneUser(user dto.UserBody) (res dto.GetOneUserRes) {
+func CreateOneUser(user dto.CreateUserBody) (res dto.GetOneUserRes) {
 	newUser := model.User{}
 	body, _ := json.Marshal(user)
 	_ = json.Unmarshal(body, &newUser)

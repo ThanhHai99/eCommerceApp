@@ -48,7 +48,7 @@ func UpdateCategory(id uuid.UUID, input map[string]interface{}) (res dto.UpdateC
 	return
 }
 
-func CreateOneCategory(category dto.CategoryBody) (res dto.GetOneCategoryRes) {
+func CreateOneCategory(category dto.CreateCategoryBody) (res dto.GetOneCategoryRes) {
 	newCategory := model.Category{}
 	body, _ := json.Marshal(category)
 	_ = json.Unmarshal(body, &newCategory)

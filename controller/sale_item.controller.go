@@ -46,7 +46,7 @@ func UpdateSaleItem(c *gin.Context) {
 }
 
 func CreateOneSaleItem(c *gin.Context) {
-	input := dto.SaleItemBody{}
+	input := dto.CreateSaleItemBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneSaleItem(input)
 

@@ -46,7 +46,7 @@ func UpdatePriceLog(c *gin.Context) {
 }
 
 func CreateOnePriceLog(c *gin.Context) {
-	input := dto.PriceLogBody{}
+	input := dto.CreatePriceLogBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOnePriceLog(input)
 

@@ -1,10 +1,10 @@
 package dto
 
-type HealCheckDataRes struct {
+type HealCheckData struct {
 	Uptime string `json:"uptime"`
 }
 
 type HealthCheckRes struct {
 	BaseRes
-	Data HealCheckDataRes `json:"data"`
+	Data HealCheckData `json:"data"`
 }

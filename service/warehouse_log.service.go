@@ -48,7 +48,7 @@ func UpdateWarehouseLog(id uuid.UUID, input map[string]interface{}) (res dto.Upd
 	return
 }
 
-func CreateOneWarehouseLog(warehouseLog dto.WarehouseLogBody) (res dto.GetOneWarehouseLogRes) {
+func CreateOneWarehouseLog(warehouseLog dto.CreateWarehouseLogBody) (res dto.GetOneWarehouseLogRes) {
 	newWarehouseLog := model.WarehouseLog{}
 	body, _ := json.Marshal(warehouseLog)
 	_ = json.Unmarshal(body, &newWarehouseLog)

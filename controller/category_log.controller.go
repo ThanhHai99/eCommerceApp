@@ -46,7 +46,7 @@ func UpdateCategoryLog(c *gin.Context) {
 }
 
 func CreateOneCategoryLog(c *gin.Context) {
-	input := dto.CategoryLogBody{}
+	input := dto.CreateCategoryLogBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneCategoryLog(input)
 

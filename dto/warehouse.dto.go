@@ -7,6 +7,7 @@ import (
 )
 
 type GetAllWarehouseDataRes struct {
+	BaseRes
 	Total int16             `json:"total"`
 	Page  int16             `json:"page"`
 	Data  []model.Warehouse `json:"data"`
@@ -31,10 +32,13 @@ type DeleteWarehouseRes struct {
 	BaseRes
 }
 
-type WarehouseBody struct {
+type CreateExportingBody struct {
+	Amount []int16     `json:"amount"`
+	ItemID []uuid.UUID `json:"item_id"`
+}
+
+type CreateImportingBody struct {
+	CreateExportingBody
 	ExpirationDate []time.Time `json:"expiration_date"`
-	Amount         []int16     `json:"amount"`
 	Price          []int16     `json:"price"`
-	Item           []uuid.UUID `json:"item"`
-	CreatedBy      uuid.UUID   `json:"created_by"`
 }

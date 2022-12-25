@@ -48,7 +48,7 @@ func UpdateSaleLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateSa
 	return
 }
 
-func CreateOneSaleLog(saleLog dto.SaleLogBody) (res dto.GetOneSaleLogRes) {
+func CreateOneSaleLog(saleLog dto.CreateSaleLogBody) (res dto.GetOneSaleLogRes) {
 	newSaleLog := model.SaleLog{}
 	body, _ := json.Marshal(saleLog)
 	_ = json.Unmarshal(body, &newSaleLog)

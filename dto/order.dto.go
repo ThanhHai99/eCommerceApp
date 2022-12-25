@@ -2,10 +2,10 @@ package dto
 
 import (
 	"eCommerce/model"
-	"github.com/google/uuid"
 )
 
 type GetAllOrderDataRes struct {
+	BaseRes
 	Total int16         `json:"total"`
 	Page  int16         `json:"page"`
 	Data  []model.Order `json:"data"`
@@ -30,10 +30,13 @@ type DeleteOrderRes struct {
 	BaseRes
 }
 
-type OrderBody struct {
-	DeliveryAddress string    `json:"delivery_address"`
-	PaymentMethod   string    `json:"payment_method"`
-	Paid            bool      `json:"paid"`
-	Cost            int16     `json:"cost"`
-	CreatedBy       uuid.UUID `json:"created_by"`
+type CreateOrderBody struct {
+	DeliveryAddress string `json:"delivery_address"`
+	PaymentMethod   string `json:"payment_method"`
+	Paid            bool   `json:"paid"`
+	Cost            int16  `json:"cost"`
+}
+
+type UpdateOrderBody struct {
+	CreateOrderBody
 }

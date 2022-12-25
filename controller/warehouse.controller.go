@@ -46,7 +46,7 @@ func UpdateWarehouse(c *gin.Context) {
 }
 
 func CreateOneWarehouse(c *gin.Context) {
-	input := dto.WarehouseBody{}
+	input := dto.CreateImportingBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneWarehouse(input)
 

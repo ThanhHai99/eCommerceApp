@@ -48,7 +48,7 @@ func UpdateOrder(id uuid.UUID, input map[string]interface{}) (res dto.UpdateOrde
 	return
 }
 
-func CreateOneOrder(order dto.OrderBody) (res dto.GetOneOrderRes) {
+func CreateOneOrder(order dto.CreateOrderBody) (res dto.GetOneOrderRes) {
 	newOrder := model.Order{}
 	body, _ := json.Marshal(order)
 	_ = json.Unmarshal(body, &newOrder)

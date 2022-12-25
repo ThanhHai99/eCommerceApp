@@ -46,7 +46,7 @@ func UpdateInvoice(c *gin.Context) {
 }
 
 func CreateOneInvoice(c *gin.Context) {
-	input := dto.InvoiceBody{}
+	input := dto.CreateInvoiceBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneInvoice(input)
 

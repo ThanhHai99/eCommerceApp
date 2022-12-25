@@ -46,7 +46,7 @@ func UpdateItemLog(c *gin.Context) {
 }
 
 func CreateOneItemLog(c *gin.Context) {
-	input := dto.ItemLogBody{}
+	input := dto.CreateItemLogBody{}
 	_ = c.BindJSON(&input)
 	res := service.CreateOneItemLog(input)
 

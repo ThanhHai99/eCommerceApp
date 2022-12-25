@@ -6,6 +6,7 @@ import (
 )
 
 type GetAllItemDataRes struct {
+	BaseRes
 	Total int16        `json:"total"`
 	Page  int16        `json:"page"`
 	Data  []model.Item `json:"data"`
@@ -30,11 +31,14 @@ type DeleteItemRes struct {
 	BaseRes
 }
 
-type ItemBody struct {
+type CreateItemBody struct {
 	Name       string    `json:"name"`
-	Category   uuid.UUID `json:"category"`
+	CategoryID uuid.UUID `json:"category_id"`
 	Detail     string    `json:"detail"`
 	UserManual string    `json:"user_manual"`
 	Price      int16     `json:"price"`
-	CreatedBy  uuid.UUID `json:"created_by"`
+}
+
+type UpdateItemBody struct {
+	CreateItemBody
 }

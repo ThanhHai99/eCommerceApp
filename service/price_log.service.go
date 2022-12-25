@@ -48,7 +48,7 @@ func UpdatePriceLog(id uuid.UUID, input map[string]interface{}) (res dto.UpdateP
 	return
 }
 
-func CreateOnePriceLog(priceLog dto.PriceLogBody) (res dto.GetOnePriceLogRes) {
+func CreateOnePriceLog(priceLog dto.CreatePriceLogBody) (res dto.GetOnePriceLogRes) {
 	newPriceLog := model.PriceLog{}
 	body, _ := json.Marshal(priceLog)
 	_ = json.Unmarshal(body, &newPriceLog)

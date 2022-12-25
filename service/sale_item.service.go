@@ -48,7 +48,7 @@ func UpdateSaleItem(id uuid.UUID, input map[string]interface{}) (res dto.UpdateS
 	return
 }
 
-func CreateOneSaleItem(saleItem dto.SaleItemBody) (res dto.GetOneSaleItemRes) {
+func CreateOneSaleItem(saleItem dto.CreateSaleItemBody) (res dto.GetOneSaleItemRes) {
 	newSaleItem := model.SaleItem{}
 	body, _ := json.Marshal(saleItem)
 	_ = json.Unmarshal(body, &newSaleItem)
