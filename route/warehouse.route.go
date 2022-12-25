@@ -3,6 +3,7 @@ package route
 import (
 	"eCommerce/controller"
 	"eCommerce/middleware"
+	"eCommerce/validation"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,7 +13,7 @@ func WarehouseRoutes(rootRoute *gin.RouterGroup) {
 		warehouseRouter.GET("/", controller.GetAllWarehouse)
 		warehouseRouter.GET("/:id", controller.GetOneWarehouse)
 		warehouseRouter.PATCH("/:id", controller.UpdateWarehouse)
-		warehouseRouter.POST("/", controller.CreateOneWarehouse)
+		warehouseRouter.POST("/", validation.CreateWarehouseBodyValidate(), controller.CreateOneWarehouse)
 		warehouseRouter.DELETE("/:id", controller.DeleteWarehouse)
 	}
 }

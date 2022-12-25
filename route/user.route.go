@@ -3,6 +3,7 @@ package route
 import (
 	"eCommerce/controller"
 	"eCommerce/middleware"
+	"eCommerce/validation"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,7 +13,7 @@ func UserRoutes(rootRoute *gin.RouterGroup) {
 		userRouter.GET("/", controller.GetAllUser)
 		userRouter.GET("/:id", controller.GetOneUser)
 		userRouter.PATCH("/:id", controller.UpdateUser)
-		userRouter.POST("/", controller.CreateOneUser)
+		userRouter.POST("/", validation.CreateUserBodyValidate(), controller.CreateOneUser)
 		userRouter.DELETE("/:id", controller.DeleteUser)
 	}
 }

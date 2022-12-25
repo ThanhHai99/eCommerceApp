@@ -3,6 +3,7 @@ package route
 import (
 	"eCommerce/controller"
 	"eCommerce/middleware"
+	"eCommerce/validation"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,8 +12,8 @@ func CategoryRoutes(rootRoute *gin.RouterGroup) {
 	{
 		categoryRouter.GET("/", controller.GetAllCategory)
 		categoryRouter.GET("/:id", controller.GetOneCategory)
-		categoryRouter.PATCH("/:id", controller.UpdateCategory)
-		categoryRouter.POST("/", controller.CreateOneCategory)
+		categoryRouter.PATCH("/:id", validation.UpdateCategoryBodyValidate(), controller.UpdateCategory)
+		categoryRouter.POST("/", validation.CreateCategoryBodyValidate(), controller.CreateOneCategory)
 		categoryRouter.DELETE("/:id", controller.DeleteCategory)
 	}
 }
