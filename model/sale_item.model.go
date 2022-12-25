@@ -4,8 +4,8 @@ import "github.com/google/uuid"
 
 type SaleItem struct {
 	BaseModel
-	ItemId uuid.UUID `gorm:"not null;" json:"item_id"`
-	SaleId uuid.UUID `gorm:"not null;" json:"sale_id"`
+	ItemID uuid.UUID `gorm:"not null;" json:"item_id"`
+	SaleID uuid.UUID `gorm:"not null;" json:"sale_id"`
 	Amount int16     `gorm:"not null;" json:"amount"`
 }
 

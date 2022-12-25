@@ -12,8 +12,8 @@ type WarehouseLog struct {
 	ExpirationDate time.Time `gorm:"not null;" json:"expiration_date"`
 	Amount         int16     `gorm:"not null;" json:"amount"`
 	CreatedBy      uuid.UUID `gorm:"not null;" json:"created_by"`
-	Warehouse      uuid.UUID `gorm:"not null;" json:"warehouse"`
-	Item           uuid.UUID `gorm:"not null;" json:"item"`
+	WarehouseID    uuid.UUID `gorm:"not null;" json:"warehouse"`
+	ItemID         uuid.UUID `gorm:"not null;" json:"item"`
 }
 
 func (WarehouseLog) TableName() string {

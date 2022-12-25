@@ -9,6 +9,8 @@ type Order struct {
 	Paid            bool      `gorm:"default:false" json:"paid"`
 	Cost            int16     `gorm:"not null" json:"cost"`
 	CreatedBy       uuid.UUID `json:"created_by"`
+	ItemOrders      []ItemOrder
+	Invoices        []Invoice
 }
 
 func (Order) TableName() string {

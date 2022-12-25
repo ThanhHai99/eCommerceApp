@@ -61,7 +61,7 @@ func CreateOneWarehouse(warehouse dto.WarehouseBody) (res dto.GetOneWarehouseRes
 	newWarehouseLog := model.WarehouseLog{}
 	newWarehouseLog.Status = "+"
 	//newWarehouseLog.Price =
-	newWarehouseLog.Warehouse = pre.ID
+	newWarehouseLog.WarehouseID = pre.ID
 	//newWarehouseLog.Item =
 	//newWarehouseLog.Amount =
 	//newWarehouseLog.ExpirationDate =

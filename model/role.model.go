@@ -2,7 +2,8 @@ package model
 
 type Role struct {
 	BaseModel
-	Name string `gorm:"not null;" json:"name"`
+	Name  string `gorm:"not null;" json:"name"`
+	Users []User
 }
 
 func (Role) TableName() string {

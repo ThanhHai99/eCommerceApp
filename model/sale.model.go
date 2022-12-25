@@ -14,6 +14,8 @@ type Sale struct {
 	IsApplied bool      `gorm:"not null,default:false" json:"is_applied"`
 	Code      string    `gorm:"not null,unique;" json:"code"`
 	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
+	SaleItems []SaleItem
+	SaleLogs  []SaleLog
 }
 
 func (Sale) TableName() string {

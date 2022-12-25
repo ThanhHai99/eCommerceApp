@@ -16,7 +16,7 @@ type SaleLog struct {
 	IsApplied bool      `gorm:"not null;" json:"is_applied"`
 	Code      string    `gorm:"not null;" json:"code"`
 	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
-	SaleId    uuid.UUID `gorm:"not null;" json:"sale_id"`
+	SaleID    uuid.UUID `gorm:"not null;" json:"sale_id"`
 }
 
 func (SaleLog) TableName() string {

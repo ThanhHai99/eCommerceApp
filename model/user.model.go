@@ -11,8 +11,12 @@ type User struct {
 	Address     string    `gorm:"not null;" json:"address"`
 	IsActive    bool      `gorm:"not null;" json:"is_active"`
 	VerifyToken string    `gorm:"not null;" json:"verify_token"`
-	RoleId      uuid.UUID `gorm:"not null;" json:"role_id"`
+	RoleID      uuid.UUID `gorm:"not null;" json:"role_id"`
 	IsLocked    bool      `gorm:"not null;" json:"is_locked"`
+	Categories  []Category
+	Sales       []Sale
+	Orders      []Order
+	Items       []Item
 }
 
 func (User) TableName() string {

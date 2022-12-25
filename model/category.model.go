@@ -4,8 +4,11 @@ import "github.com/google/uuid"
 
 type Category struct {
 	BaseModel
-	Name      string    `gorm:"not null;" json:"name"`
-	CreatedBy uuid.UUID `gorm:"not null;" json:"created_by"`
+	Name      string        `gorm:"not null;" json:"name"`
+	CreatedBy uuid.UUID     `gorm:"not null;" json:"created_by"`
+	Items     []Item        `gorm:"" json:"items"`
+	Logs      []CategoryLog `gorm:"" json:"logs"`
+	ItemLogs  []ItemLog     `gorm:"" json:"item_logs"`
 }
 
 func (Category) TableName() string {

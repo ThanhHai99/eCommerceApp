@@ -15,7 +15,7 @@ func ValidateAccessToken() gin.HandlerFunc {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" || !strings.Contains(authHeader, "Bearer") {
 			res.Code = util.FAIL_CODE
-			res.Message = "Failed to process request"
+			res.Message = "Token is not empty"
 			c.AbortWithStatusJSON(http.StatusBadRequest, res)
 			return
 		}

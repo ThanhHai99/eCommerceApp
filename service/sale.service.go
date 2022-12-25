@@ -65,7 +65,7 @@ func CreateOneSale(sale dto.SaleBody, saleItem dto.SaleItemBody) (res dto.GetOne
 
 	newSaleLog := model.SaleLog{}
 	newSaleLog.Name = pre.Name
-	newSaleLog.SaleId = pre.ID
+	newSaleLog.SaleID = pre.ID
 	newSaleLog.SaleItem = saleItem.Item
 	newSaleLog.StartDate = pre.StartDate
 	newSaleLog.EndDate = pre.EndDate

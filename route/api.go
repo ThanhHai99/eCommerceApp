@@ -13,6 +13,7 @@ func SetupRouter(rootRoute *gin.RouterGroup) {
 	OrderRoutes(rootRoute)
 	SaleRoutes(rootRoute)
 	UserRoutes(rootRoute)
+	CategoryRoutes(rootRoute)
 	CategoryLogRoutes(rootRoute)
 	ItemLogRoutes(rootRoute)
 	ItemOrderRoutes(rootRoute)
